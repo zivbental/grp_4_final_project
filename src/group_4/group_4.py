@@ -21,7 +21,7 @@ def main():
     b_plot = RNABarPlotter(cleaned_data)
     b_plot.plot(0.05)
 
-    '''complex_related_pathway = []
+    complex_related_pathway = []
     with ThreadPoolExecutor(max_workers=8) as executor:  #up to 8 threads will run concurrently
         complex_related_pathway = list(executor.map(enrich_gene, cleaned_data['row'])) 
     cleaned_data['complex related pathway'] = complex_related_pathway
@@ -29,7 +29,7 @@ def main():
     for gene_name in cleaned_data['row']:
       pathway_name = scrape_for_pathway(gene_name)
       simple_related_pathway.append(pathway_name)
-    cleaned_data['related pathway'] = simple_related_pathway'''
+    cleaned_data['related pathway'] = simple_related_pathway
     processed_data_for_plotting = cleaner.remove_na().data
     final_processed_df, top_genes = process_data_for_volcanoplot(processed_data_for_plotting,'padj','-log10(p-value)','padj','significance',[0.01, 0.05, 0.1],['very significant', 'significant','trend','non-sognificant'],10,False)
     cleaned_data.to_csv('output_data.csv')
