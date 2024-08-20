@@ -1,7 +1,6 @@
 """Main module."""
 from data_cleaning import DataCleaning, create_test_df
 from data_processing import enrich_gene, scrape_for_pathway, process_data_for_volcanoplot
-#from data_cleaning.try_vis import process_data_for_volcanoplot
 from visualizations import RNABarPlotter, ScatterPlotToolkit
 
 from concurrent.futures import ThreadPoolExecutor 

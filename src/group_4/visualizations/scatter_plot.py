@@ -77,4 +77,26 @@ class ScatterPlotToolkit:
                 genes_df[y_col].iloc[i], 
                 genes_df[label_col].iloc[i],
                 **kwargs)  # Allows for customization of text appearance, such as fontsize, color, etc.
+    
+    def set_size(self, figsize: tuple = (10, 6)):
+        """
+        Sets the size of the plot.
+
+        Args:
+            figsize (tuple, optional): The size of the figure (width, height). Defaults to (10, 6).
+        """
+        self.fig.set_size_inches(figsize)
+
+    def set_axes(self, xlim: tuple = None, ylim: tuple = None):
+        """
+        Sets the limits for the x and y axes.
+
+        Args:
+            xlim (tuple, optional): The limits for the x-axis (min, max). Defaults to None.
+            ylim (tuple, optional): The limits for the y-axis (min, max). Defaults to None.
+        """
+        if xlim:
+            self.axs.set_xlim(xlim)
+        if ylim:
+            self.axs.set_ylim(ylim)
             
