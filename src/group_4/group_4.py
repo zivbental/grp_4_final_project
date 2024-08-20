@@ -1,6 +1,6 @@
 """Main module."""
-from data_cleaning import DataCleaning, create_test_df, filter_protein_coding_genes
-from data_processing import enrich_gene, scrape_for_pathway, process_data_for_volcanoplot
+from data_cleaning import DataCleaning, create_test_df, process_data_for_volcanoplot, filter_protein_coding_genes
+from data_processing import enrich_gene, scrape_for_pathway
 from visualizations import RNABarPlotter, ScatterPlotToolkit
 
 from concurrent.futures import ThreadPoolExecutor 
@@ -29,8 +29,8 @@ def main():
       pathway_name = scrape_for_pathway(gene_name)
       simple_related_pathway.append(pathway_name)
     cleaned_data['related pathway'] = simple_related_pathway
-    # process_data_for_volcanoplot = cleaner.clean_data(column_name_to_filter='padj',threshold=1,condition = 'smaller', column_name_to_remove='Unnamed: 0')
-    # processed_df, top_genes, threshold = process_data_for_volcanoplot(process_data_for_volcanoplot,'padj','-log10(p-value)','padj','significance',[0.01, 0.05, 0.1],['very significant', 'significant','trend','non-sognificant',10,False])
+    processed_data_for_plotting = cleaner.clean_data(column_name_to_filter='padj',threshold=1,condition = 'smaller', column_name_to_remove='Unnamed: 0')
+    processed_df, top_genes = process_data_for_volcanoplot(processed_data_for_plotting,'padj','-log10(p-value)','padj','significance',[0.01, 0.05, 0.1],['very significant', 'significant','trend','non-sognificant',10,False])
     cleaned_data.to_csv('output_data.csv')
     # q = ScatterPlotToolkit()
     # q.plot(processed_df,'log2FoldChange','log10col')
