@@ -166,6 +166,5 @@ def process_data_for_volcanoplot(input_data: pd.DataFrame,p_ref_colname: str,log
     with_log_col = minus_log10_col(input_data,p_ref_colname,log10colname)
     processed_df = label_by_order(with_log_col, ref_colname, label_colname, thresholds, labels)
     top_genes, threshold = identify_top_n_values(processed_df,ref_colname,n,highest)
-    return processed_df, top_genes, threshold
-
+    return processed_df, top_genes
 
